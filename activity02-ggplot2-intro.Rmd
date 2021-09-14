@@ -1,6 +1,6 @@
 ---
 title: "Activity 2.1"
-author: "Team Name"
+author: "Elayna"
 output: github_document
 ---
 
@@ -21,14 +21,14 @@ The `penguins` data set contains the following variables:
 
 All artwork by [@allison_horst](https://twitter.com/allison_horst).
 
-- `species`:
-- `island`:
-- `bill_length_mm`:
-- `bill_depth_mm`:
-- `flipper_length_mm`:
-- `body_mass_g`:
-- `sex`:
-- `year`:
+- `species`:a factor denoting penguin species (Adélie, Chinstrap and Gentoo)
+- `island`:a factor denoting island in Palmer Archipelago, Antarctica (Biscoe, Dream or Torgersen)
+- `bill_length_mm`:a number denoting bill length (millimeters)
+- `bill_depth_mm`:a number denoting bill depth (millimeters)
+- `flipper_length_mm`:an integer denoting flipper length (millimeters)
+- `body_mass_g`:an integer denoting body mass (grams)
+- `sex`:a factor denoting penguin sex (female, male)
+- `year`:an integer denoting the study year (2007, 2008, or 2009)
 
 We will need to install `{palmerpenguins}` in your RStudio session to be able to use this.
 There are a couple of ways to do this, but my preferred method is to type the following in your **Console** pane (this should be the pane below this open `.Rmd` file).
@@ -81,7 +81,6 @@ In the code chunk below, I load the package, and show a snippet of the `penguins
 library(palmerpenguins)
 penguins
 ```
-
 While I believe that most of the variables are relatively self-explanatory, we should still make sure we understand what information we have.
 Type the following in your **Console** to view the help documentation for the `penguins` dataset: `?penguins`.
 This should also only ever be typed in your Console (not included in an R Markdown file).
@@ -114,13 +113,13 @@ For this boxplot, we want to double-encode the variable `species` to not only th
 In the code chunk below, add the missing code (i.e., replacing the `___`) to have our comparative boxplots also include some coloring.
 
 ```{r boxplot-colors}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill=species)) +
   geom_boxplot()
 ```
 
 Now, comment on what you notice from these boxplots.
 
-**Response**:
+**Response**:All three species hav a similia spread. However, gentoo has the highest mean flipper length, then chinstrap, and lastly adelie.
 
 
 Another way to visualize distributions are with points.
@@ -129,15 +128,15 @@ We can create something similar with jitterplots using `geom_jitter`.
 In the code chunk below, complete it so that it produces a jitterplot.
 
 ```{r jitterplot}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
-  ___()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species), position = jitter) +
+  geom_jitter()
 ```
 
 Comment on the strengths of the boxplot compared to the jitterplot and vice versa.
 That is, what can you easily determine by looking at the boxplot?
 What about the jitterplot?
 
-**Response**:
+**Response**: The boxplots are usually simpler to read. You can see the middle of the data, quartiles, and range uite easily. A jitterplot is good for looking ta individual points. It could be easier to asses outliers or points of interest
 
 
 Knit, stage, commit (with a meaningful commit message),and push everything in your **Git** pane to your GitHub repo.
