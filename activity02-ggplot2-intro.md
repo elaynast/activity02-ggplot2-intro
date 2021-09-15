@@ -274,7 +274,37 @@ graphs). Using these three graphs to discuss which of these three
 categorical variables seems to be contributing more to these two peaks
 and explain your reasoning.
 
-**Response**:
+``` r
+ggplot(data = penguins) + 
+  geom_jitter(mapping = aes(x = bill_length_mm, y = species, color=species))
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_species-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins) + 
+  geom_jitter(mapping = aes(x = bill_length_mm, y = sex, color=sex))
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_sex-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins) + 
+  geom_jitter(mapping = aes(x = bill_length_mm, y = island, color=island))
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_island-1.png)<!-- -->
+
+**Response**: To me it looks like the species causes those two high
+points. I’m nt exactly sure but there’s a peak around 37 where a lot of
+the eldelie species are at. There is also a large peak at 47mm which is
+where a lot of the data of the other two species are.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
@@ -289,16 +319,37 @@ exploring scatterplots using `{ggplot2}`.
 In the code chunk below, create a scatterplot for the relationship
 between `flipper_length_mm` and `body_mass_g`.
 
+``` r
+ggplot(data=penguins,(mapping=aes(x=flipper_length_mm, y=body_mass_g)))+
+  geom_point()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass-1.png)<!-- -->
+
 Describe any patterns that you notice.
 
-**Response**:
+**Response**:There appears to be a positive relaionship between flippper
+length and body mass. That means as the flipper length of a penguin
+increases 1 mm, a penguins body mass also tends to increase.
 
 Recreate your scatterplot in the code chunk below; however, *map*
 `species` to the `color` and `shape` aesthetics.
 
+``` r
+ggplot(data=penguins,(mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species, shape=species)))+
+  geom_point()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass_with_species-1.png)<!-- -->
+
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: It appears the the Gentoo species tends to have a much
+higher flipper length and body mass than the other two species.
 
 The previous plot looked great except even in this rather small dataset
 (n = 344), there might are a number of points overlapping. In the R code
@@ -307,9 +358,20 @@ aesthetic) of `size` (using some value larger than zero) and `alpha`
 (using some value between 0 and 1) to make your previous plot more
 effective.
 
+``` r
+ggplot(data=penguins,(mapping=aes(x=flipper_length_mm, y=body_mass_g)))+
+  geom_point(alpha=0.9, size=2)
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass_with_size_alpha-1.png)<!-- -->
+
 Discuss the decisions you made to help your plot be easier to read.
 
-**Response**:
+**Response**: The scatter plot was easier to read with the size small
+and the alpha larger. Also the easiest to read would be a plot with
+color.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
